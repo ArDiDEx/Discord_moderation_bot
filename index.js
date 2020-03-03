@@ -42,6 +42,7 @@ bot.on('message', msg => {
 
 bot.on('message', msg => {
   if (msg.content.startsWith("!addquestion ")) {
+    if(!msg.author.hasPermission('MANAGE_MESSAGES'))return;
     var question = msg.content.replace("!addquestion ", "");
     const filter = m => m.author.id === msg.author.id;
     msg.reply("Veilliez maintenant préciser une réponse a la question. ( vous avez 60s ) ")
@@ -146,19 +147,6 @@ bot.on('guildCreate', guild => {
 });
 
 
-/**
- * 
- * Apprentisage automatique
- * @author ArDiDEx
- */
-
-bot.on('message', msg => {
-  if (msg.author.bot) return;
-  if (msg.guild == undefined) return;
-  if (msg.content.startsWith("!question")) {
-    // question need response
-  }
-})
 
 /**
  * 
